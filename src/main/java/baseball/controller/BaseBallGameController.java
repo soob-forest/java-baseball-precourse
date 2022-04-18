@@ -56,7 +56,7 @@ public class BaseBallGameController {
 
             this.view.outputMatchHint(matchHint);
 
-            isRun = isRun(matchHint);
+            isRun = reRun(matchHint);
         }
     }
 
@@ -84,7 +84,7 @@ public class BaseBallGameController {
         return baseBallNumbers;
     }
 
-    private boolean isRun(MatchHint matchHint) {
+    private boolean reRun(MatchHint matchHint) {
         return matchHint.getStrikeCount() != 3;
     }
 
