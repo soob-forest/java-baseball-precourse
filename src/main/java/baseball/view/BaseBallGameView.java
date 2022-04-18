@@ -22,7 +22,11 @@ public class BaseBallGameView {
 
     public String inputBaseBallNumbers() {
 
-        return Console.readLine();
+        try {
+            return Console.readLine();
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
 
     public void outputSuccess() {
@@ -35,7 +39,11 @@ public class BaseBallGameView {
 
     public String inputEndOrContinue() {
 
-        return Console.readLine();
+        try {
+            return Console.readLine();
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
 
     public void outputMatchHint(MatchHint matchHint) {
