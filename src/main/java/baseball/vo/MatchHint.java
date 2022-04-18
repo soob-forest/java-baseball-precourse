@@ -32,11 +32,11 @@ public class MatchHint {
         return new MatchHint(strikeCount, ballCount);
     }
 
-    private static int sumMatchResultCount(MatchResult matchResult, MatchResult strike, int strikeCount) {
-        if (matchResult == strike) {
-            strikeCount++;
+    private static int sumMatchResultCount(MatchResult matchResult, MatchResult matchResultType, int hitCount) {
+        if (matchResult == matchResultType) {
+            hitCount++;
         }
-        return strikeCount;
+        return hitCount;
     }
 
 
