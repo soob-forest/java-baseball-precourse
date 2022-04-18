@@ -1,9 +1,9 @@
 package baseball.vo;
 
-import baseball.enums.MatchResult;
-
 public class MatchHint {
 
+    private static final int MIN_COUNT = 0;
+    private static final int MAX_COUNT = 3;
     private int strikeCount;
     private int ballCount;
 
@@ -11,34 +11,13 @@ public class MatchHint {
 
         this.strikeCount = strikeCount;
         this.ballCount = ballCount;
+
+        validate();
     }
 
-    static public MatchHint match(ThreeBaseBallNumbers hitterBaseBassNumbers,
-                                  ThreeBaseBallNumbers pitcherBaseBallNumbers) {
-
-        int strikeCount = 0;
-        int ballCount = 0;
-
-        for (int hitterIndex = 0; hitterIndex < hitterBaseBassNumbers.getThreeBaseBallNumbers().size(); hitterIndex++) {
-
-            BaseBallNumber hitterBaseBallNumber = hitterBaseBassNumbers.getThreeBaseBallNumbers().get(hitterIndex);
-
-            MatchResult matchResult = pitcherBaseBallNumbers.pitch(hitterBaseBallNumber, hitterIndex);
-
-            strikeCount = sumMatchResultCount(matchResult, MatchResult.STRIKE, strikeCount);
-            ballCount = sumMatchResultCount(matchResult, MatchResult.BALL, ballCount);
-        }
-
+    static public MatchHint create(int strikeCount, int ballCount) {
         return new MatchHint(strikeCount, ballCount);
     }
-
-    private static int sumMatchResultCount(MatchResult matchResult, MatchResult matchResultType, int hitCount) {
-        if (matchResult == matchResultType) {
-            hitCount++;
-        }
-        return hitCount;
-    }
-
 
     public int getStrikeCount() {
         return strikeCount;
@@ -46,6 +25,18 @@ public class MatchHint {
 
     public int getBallCount() {
         return ballCount;
+    }
+
+    private void validate() {
+        if (strikeCount < MIN_COUNT || MAX_COUNT < strikeCount) {
+            throw new IllegalArgumentException();
+        }
+        if (ballCount < MIN_COUNT || MAX_COUNT < ballCount) {
+            throw new IllegalArgumentException();
+        }
+        if (MAX_COUNT < ballCount + strikeCount) {
+            throw new IllegalArgumentException();
+        }
     }
 
 }

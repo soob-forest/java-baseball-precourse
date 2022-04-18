@@ -1,6 +1,5 @@
 package baseball.vo;
 
-import baseball.enums.MatchResult;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -86,29 +85,5 @@ public class ThreeBaseBallNumbers {
     public List<BaseBallNumber> getThreeBaseBallNumbers() {
         return this.baseBallNumbers;
     }
-
-    public MatchResult pitch(BaseBallNumber hitterBaseBallNumber, int hitterBaseBallIndex) {
-
-        if (isStrike(hitterBaseBallNumber, hitterBaseBallIndex)) {
-            return MatchResult.STRIKE;
-        }
-
-        if (isBall(hitterBaseBallNumber, hitterBaseBallIndex)) {
-            return MatchResult.BALL;
-        }
-
-        return MatchResult.NOTHING;
-    }
-
-    private boolean isStrike(BaseBallNumber hitterBaseBallNumber, int hitterBaseBallIndex) {
-        return this.baseBallNumbers
-                .contains(hitterBaseBallNumber)
-                && this.baseBallNumbers.indexOf(hitterBaseBallNumber) == hitterBaseBallIndex;
-    }
-
-    private boolean isBall(BaseBallNumber hitterBaseBallNumber, int hitterBaseBallIndex) {
-        return this.baseBallNumbers
-                .contains(hitterBaseBallNumber)
-                && this.baseBallNumbers.indexOf(hitterBaseBallNumber) != hitterBaseBallIndex;
-    }
+    
 }

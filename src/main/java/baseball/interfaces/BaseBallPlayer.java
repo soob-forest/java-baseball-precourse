@@ -1,6 +1,5 @@
 package baseball.interfaces;
 
-import baseball.vo.MatchHint;
 import baseball.vo.ThreeBaseBallNumbers;
 
 public interface BaseBallPlayer {
@@ -9,5 +8,4 @@ public interface BaseBallPlayer {
 
     ThreeBaseBallNumbers getSelectedBaseBallNumbers();
 
-    MatchHint playWith(BaseBallPlayer baseBallPlayer);
 }
