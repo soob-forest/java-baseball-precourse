@@ -34,18 +34,16 @@ public class ThreeBaseBallNumbers {
 
     private static List<BaseBallNumber> generateRandomBaseBallNumberList() {
 
-        List<BaseBallNumber> baseBallNumbers = new ArrayList<>();
+        Set<BaseBallNumber> baseBallNumbers = new HashSet<>();
 
-        BaseBallNumber firstBaseBallNumber = BaseBallNumber.create(Randoms.pickNumberInRange(MIN_NUMBERS, MAX_NUMBERS));
-        baseBallNumbers.add(firstBaseBallNumber);
+        for (int ballCount = 0; ballCount < BALL_COUNT; ballCount++) {
+            baseBallNumbers.add(generateNextBaseBallNumber(baseBallNumbers));
+        }
 
-        baseBallNumbers.add(generateNextBaseBallNumber(baseBallNumbers));
-        baseBallNumbers.add(generateNextBaseBallNumber(baseBallNumbers));
-
-        return baseBallNumbers;
+        return new ArrayList<>(baseBallNumbers);
     }
 
-    private static BaseBallNumber generateNextBaseBallNumber(List<BaseBallNumber> baseBallNumbers) {
+    private static BaseBallNumber generateNextBaseBallNumber(Set<BaseBallNumber> baseBallNumbers) {
 
         BaseBallNumber nextBaseBallNumber = BaseBallNumber.create(Randoms.pickNumberInRange(MIN_NUMBERS, MAX_NUMBERS));
 
@@ -56,16 +54,10 @@ public class ThreeBaseBallNumbers {
         return nextBaseBallNumber;
     }
 
-    private static boolean hasSameBaseBallNumber(List<BaseBallNumber> baseBallNumbers,
-                                                 BaseBallNumber addedBaseBallNumber) {
+    private static boolean hasSameBaseBallNumber(Set<BaseBallNumber> baseBallNumbers,
+                                                 BaseBallNumber target) {
 
-        for (BaseBallNumber baseBallNumber : baseBallNumbers) {
-            if (baseBallNumber.equals(addedBaseBallNumber)) {
-                return true;
-            }
-        }
-
-        return false;
+        return baseBallNumbers.contains(target);
     }
 
     private void validate() {
