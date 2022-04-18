@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.domain.Catcher;
 import baseball.domain.Computer;
 import baseball.domain.Player;
 import baseball.enums.EndOrContinueStatus;
@@ -21,12 +22,13 @@ public class BaseBallGameController {
 
         Computer computer = new Computer();
         Player player = new Player();
+        Catcher catcher = new Catcher(player, computer);
 
         EndOrContinueStatus endOrContinueStatus = EndOrContinueStatus.CONTINUE;
 
         while (endOrContinueStatus.equals(EndOrContinueStatus.CONTINUE)) {
 
-            run(computer, player);
+            run(computer, player, catcher);
 
             this.view.outputSuccess();
             this.view.outputEndOrContinue();
@@ -45,14 +47,19 @@ public class BaseBallGameController {
         return EndOrContinueStatus.END;
     }
 
-    private void run(Computer computer, Player player) {
+    private void run(Computer computer, Player player, Catcher catcher) {
 
         computer.selectThreeBaseBallNumbers(ThreeBaseBallNumbers.createRandomThreeBaseBalls());
 
         boolean isRun = true;
         while (isRun) {
             this.view.outputEnterNumber();
-            MatchHint matchHint = matchWithPlayer(computer, player);
+
+            List<BaseBallNumber> playerNumbers = hitBall();
+
+            player.selectThreeBaseBallNumbers(ThreeBaseBallNumbers.createThreeBaseBalls(playerNumbers));
+
+            MatchHint matchHint = catcher.receive();
 
             this.view.outputMatchHint(matchHint);
 
@@ -60,16 +67,10 @@ public class BaseBallGameController {
         }
     }
 
-    private MatchHint matchWithPlayer(Computer computer, Player player) {
+    private List<BaseBallNumber> hitBall() {
         String playerInput = this.view.inputBaseBallNumbers();
 
-        List<BaseBallNumber> baseBallNumbers = parseToBaseBallNumberArray(playerInput);
-
-        player.selectThreeBaseBallNumbers(ThreeBaseBallNumbers.createThreeBaseBalls(baseBallNumbers));
-
-        MatchHint matchHint = player.playWith(computer);
-
-        return matchHint;
+        return parseToBaseBallNumberArray(playerInput);
     }
 
     private List<BaseBallNumber> parseToBaseBallNumberArray(String playerInput) {
