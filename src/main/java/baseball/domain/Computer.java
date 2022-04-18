@@ -9,10 +9,9 @@ public class Computer {
     public Computer() {
     }
 
-    public void selectThreeBaseBallNumbers() {
+    public void selectThreeBaseBallNumbers(ThreeBaseBallNumbers threeBaseBallNumbers) {
 
-        this.threeBaseBallNumbers = ThreeBaseBallNumbers.createThreeBaseBalls(
-                ThreeBaseBallNumbers.generateRandomBaseBallNumberList());
+        this.threeBaseBallNumbers = threeBaseBallNumbers;
     }
 
     public ThreeBaseBallNumbers getSelectedBaseBallNumbers() {

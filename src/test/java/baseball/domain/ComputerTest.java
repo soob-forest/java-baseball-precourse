@@ -19,7 +19,9 @@ class ComputerTest {
         int ballCount = 3;
 
         Computer computer = new Computer();
-        computer.selectThreeBaseBallNumbers();
+        computer.selectThreeBaseBallNumbers(ThreeBaseBallNumbers.createThreeBaseBalls(
+                ThreeBaseBallNumbers.generateRandomBaseBallNumberList()
+        ));
 
         ThreeBaseBallNumbers threeBaseBallNumbers = computer.getSelectedBaseBallNumbers();
 

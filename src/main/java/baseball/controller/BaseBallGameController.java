@@ -5,6 +5,7 @@ import baseball.domain.Player;
 import baseball.enums.EndOrContinueStatus;
 import baseball.view.BaseBallGameView;
 import baseball.vo.MatchHint;
+import baseball.vo.ThreeBaseBallNumbers;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,9 @@ public class BaseBallGameController {
         EndOrContinueStatus endOrContinueStatus = EndOrContinueStatus.CONTINUE;
 
         while (endOrContinueStatus.equals(EndOrContinueStatus.CONTINUE)) {
-            computer.selectThreeBaseBallNumbers();
+            computer.selectThreeBaseBallNumbers(
+                    ThreeBaseBallNumbers.createThreeBaseBalls(ThreeBaseBallNumbers.generateRandomBaseBallNumberList())
+            );
 
             run(computer, player);
 
