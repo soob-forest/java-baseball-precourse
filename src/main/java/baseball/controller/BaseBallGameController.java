@@ -4,6 +4,7 @@ import baseball.domain.Computer;
 import baseball.domain.Player;
 import baseball.enums.EndOrContinueStatus;
 import baseball.view.BaseBallGameView;
+import baseball.vo.BaseBallNumber;
 import baseball.vo.MatchHint;
 import baseball.vo.ThreeBaseBallNumbers;
 import java.util.ArrayList;
@@ -64,14 +65,25 @@ public class BaseBallGameController {
     private MatchHint matchWithPlayer(Computer computer, Player player) {
         String playerInput = this.view.inputBaseBallNumbers();
 
-        List<Integer> playerNumbers = parseToIntArray(playerInput);
+        List<BaseBallNumber> baseBallNumbers = parseToBaseBallNumberArray(playerInput);
 
-        player.selectThreeBaseBallNumbers(playerNumbers);
+        player.selectThreeBaseBallNumbers(ThreeBaseBallNumbers.createThreeBaseBalls(baseBallNumbers));
 
-        MatchHint matchHint = MatchHint.match(computer.getSelectedBaseBallNumbers(),
-                player.getSelectedBaseBallNumbers());
+        MatchHint matchHint = player.playWith(computer);
 
         return matchHint;
+    }
+
+    private List<BaseBallNumber> parseToBaseBallNumberArray(String playerInput) {
+        List<Integer> playerNumbers = parseToIntArray(playerInput);
+
+        List<BaseBallNumber> baseBallNumbers = new ArrayList<>();
+
+        for (int number : playerNumbers) {
+
+            baseBallNumbers.add(BaseBallNumber.create(number));
+        }
+        return baseBallNumbers;
     }
 
     private boolean isRun(MatchHint matchHint) {

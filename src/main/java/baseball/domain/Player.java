@@ -1,30 +1,27 @@
 package baseball.domain;
 
-import baseball.vo.BaseBallNumber;
+import baseball.interfaces.BaseBallPlayer;
+import baseball.vo.MatchHint;
 import baseball.vo.ThreeBaseBallNumbers;
-import java.util.ArrayList;
-import java.util.List;
 
-public class Player {
-    
+public class Player implements BaseBallPlayer {
+
     private ThreeBaseBallNumbers threeBaseBallNumbers;
 
     public Player() {
     }
 
-    public void selectThreeBaseBallNumbers(List<Integer> numbers) {
-
-        List<BaseBallNumber> baseBallNumbers = new ArrayList<>();
-
-        for (int number : numbers) {
-
-            baseBallNumbers.add(BaseBallNumber.create(number));
-        }
-
-        threeBaseBallNumbers = ThreeBaseBallNumbers.createThreeBaseBalls(baseBallNumbers);
+    public void selectThreeBaseBallNumbers(ThreeBaseBallNumbers threeBaseBallNumbers) {
+        
+        this.threeBaseBallNumbers = threeBaseBallNumbers;
     }
 
     public ThreeBaseBallNumbers getSelectedBaseBallNumbers() {
         return this.threeBaseBallNumbers;
+    }
+
+    public MatchHint playWith(BaseBallPlayer computer) {
+
+        return MatchHint.match(this.getSelectedBaseBallNumbers(), computer.getSelectedBaseBallNumbers());
     }
 }

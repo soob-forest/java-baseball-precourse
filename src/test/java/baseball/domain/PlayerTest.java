@@ -18,16 +18,16 @@ class PlayerTest {
 
         Player player = new Player();
 
-        List<Integer> playersNumber = new ArrayList<>(Arrays.asList(1, 2, 3));
+        List<BaseBallNumber> playersNumbers = new ArrayList<>(
+                Arrays.asList(BaseBallNumber.create(1), BaseBallNumber.create(2), BaseBallNumber.create(3)));
 
-        player.selectThreeBaseBallNumbers(playersNumber);
+        player.selectThreeBaseBallNumbers(ThreeBaseBallNumbers.createThreeBaseBalls(playersNumbers));
 
         ThreeBaseBallNumbers threeBaseBallNumbers = player.getSelectedBaseBallNumbers();
 
         for (int index = 0; index < threeBaseBallNumbers.getThreeBaseBallNumbers().size(); index++) {
 
-            assertEquals(threeBaseBallNumbers.getThreeBaseBallNumbers().get(index),
-                    BaseBallNumber.create(playersNumber.get(index)));
+            assertEquals(threeBaseBallNumbers.getThreeBaseBallNumbers().get(index), playersNumbers.get(index));
         }
     }
 }
