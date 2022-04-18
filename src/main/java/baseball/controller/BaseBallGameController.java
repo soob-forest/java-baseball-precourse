@@ -25,7 +25,7 @@ public class BaseBallGameController {
 
         while (endOrContinueStatus.equals(EndOrContinueStatus.CONTINUE)) {
             computer.selectThreeBaseBallNumbers(
-                    ThreeBaseBallNumbers.createThreeBaseBalls(ThreeBaseBallNumbers.generateRandomBaseBallNumberList())
+                    ThreeBaseBallNumbers.createRandomThreeBaseBalls()
             );
 
             run(computer, player);

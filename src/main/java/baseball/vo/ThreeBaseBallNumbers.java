@@ -27,7 +27,12 @@ public class ThreeBaseBallNumbers {
         return new ThreeBaseBallNumbers(baseBallNumbers);
     }
 
-    public static List<BaseBallNumber> generateRandomBaseBallNumberList() {
+    public static ThreeBaseBallNumbers createRandomThreeBaseBalls() {
+
+        return new ThreeBaseBallNumbers(generateRandomBaseBallNumberList());
+    }
+
+    private static List<BaseBallNumber> generateRandomBaseBallNumberList() {
 
         List<BaseBallNumber> baseBallNumbers = new ArrayList<>();
 
