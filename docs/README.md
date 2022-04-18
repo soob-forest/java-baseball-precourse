@@ -16,36 +16,36 @@
 
 ### Computer
 
-- [ ] 3개의 수(BaseBallNumber)를 선택
-    - [ ] 플레이어가 제시하는 숫자에 따른 힌트 결과(MatchHint) 반환
-        - [ ] 힌트 value object 생성 : MatchHint
+- [x] 3개의 수(BaseBallNumber)를 선택
+    - [x] 플레이어가 제시하는 숫자에 따른 힌트 결과(MatchHint) 반환
+        - [x] 힌트 value object 생성 : MatchHint
 
 ### Game Machine ( Controller )
 
-- [ ] 게임 시작
-- [ ] 플레이어가 제시한 3개의 수를 컴퓨터에 입력해 힌트 결과를 반환
-- [ ] 게임 결과를 반환
-- [ ] 플레이어의 선택에 따라, 다시 시작 혹은 완전히 프로그램을 종료 시킬 수 있다.
+- [x] 게임 시작
+- [x] 플레이어가 제시한 3개의 수를 컴퓨터에 입력해 힌트 결과를 반환
+- [x] 게임 결과를 반환
+- [x] 플레이어의 선택에 따라, 다시 시작 혹은 완전히 프로그램을 종료 시킬 수 있다.
 
 ### Player ( View )
 
-- [ ] 입력받은 3개의 수(BaseBallNumber)를 Game Machine에 제시
-- [ ] 게임 결과에 따른 선택 (다시 시작, 완전 종료)
+- [x] 입력받은 3개의 수(BaseBallNumber)를 Game Machine에 제시
+- [x] 게임 결과에 따른 선택 (다시 시작, 완전 종료)
 
 ### BaseBallNumber ( Value Object )
 
-- [ ] 1 ~ 9 범위 validate
-- [ ] equals 함수
+- [x] 1 ~ 9 범위 validate
+- [x] equals 함수
 
 ### BaseBallNumbers ( Value Object )
 
-- [ ] BaseBallNumber의 배열
-- [ ] 3자리 validate
-- [ ] 중복된 숫자 validate
+- [x] BaseBallNumber의 배열
+- [x] 3자리 validate
+- [x] 중복된 숫자 validate
 
 ### MatchHint ( Value Object )
 
 플레이어가 제시하는 숫자와 컴퓨터의 숫자에 따른 힌트 결과
 
-- [ ] 스트라이크 개수 반환 함수
-- [ ] 볼 개수 반환 함수
+- [x] 스트라이크 개수 반환 함수
+- [x] 볼 개수 반환 함수
