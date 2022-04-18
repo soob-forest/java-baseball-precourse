@@ -25,9 +25,6 @@ public class BaseBallGameController {
         EndOrContinueStatus endOrContinueStatus = EndOrContinueStatus.CONTINUE;
 
         while (endOrContinueStatus.equals(EndOrContinueStatus.CONTINUE)) {
-            computer.selectThreeBaseBallNumbers(
-                    ThreeBaseBallNumbers.createRandomThreeBaseBalls()
-            );
 
             run(computer, player);
 
@@ -50,8 +47,9 @@ public class BaseBallGameController {
 
     private void run(Computer computer, Player player) {
 
-        boolean isRun = true;
+        computer.selectThreeBaseBallNumbers(ThreeBaseBallNumbers.createRandomThreeBaseBalls());
 
+        boolean isRun = true;
         while (isRun) {
             this.view.outputEnterNumber();
             MatchHint matchHint = matchWithPlayer(computer, player);
